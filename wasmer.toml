@@ -1,0 +1,18 @@
+[package]
+name = "astral-archives"
+version = "0.1.0"
+description = "Astral Archives Static Site"
+
+[dependencies]
+"wasmer/static-web-server" = "^1"
+
+[fs]
+"/public" = "dist"
+
+[[command]]
+name = "start"
+module = "wasmer/static-web-server:webserver"
+runner = "https://webc.org/runner/wasi"
+
+[command.annotations.wasi]
+env = ["SERVER_ROOT=/public"]
